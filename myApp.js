@@ -112,12 +112,17 @@ const removeManyPeople = (done) => {
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-  Person.find({favoriteFoods: [foodToSearch]}).sort({name: 1}).limit(2).select('name favoriteFoods').exec(async (err, data) => {
-    if (err) {
-      done(err);
-    }
-    done(null, data);
-  });
+  Person.
+    find({favoriteFoods: [foodToSearch]}).
+    sort('name').
+    limit(2).
+    select('name favoriteFoods').
+    exec(async (err, data) => {
+      if (err) {
+        done(err);
+      }
+      done(null, data);
+    });
 };
 
 /** **Well Done !!**
