@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { Model } = require('mongoose');
 var mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -37,7 +38,12 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find({name: personName}, function(err, data) {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
 };
 
 const findOneByFood = (food, done) => {
