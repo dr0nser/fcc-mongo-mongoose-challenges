@@ -67,11 +67,11 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-  Model.update(personId, {favoriteFoods: [...favoriteFoods, foodToAdd]}, function(err, data) {
+  Person.findById(personId, function(err, data) {
     if (err) {
       return done(err);
     }
-    data.save();
+    data.favoriteFoods.push(foodToAdd);
     done(null, data);
   });
 };
