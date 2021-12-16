@@ -114,9 +114,9 @@ const queryChain = (done) => {
   const foodToSearch = "burrito";
   Person.
     find({favoriteFoods: [foodToSearch]}).
-    sort('name').
+    sort({ name: 1}).
     limit(2).
-    select('name favoriteFoods').
+    select({ name: 1, favoriteFoods: 1}).
     exec(async (err, data) => {
       if (err) {
         done(err);
