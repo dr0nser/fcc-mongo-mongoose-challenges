@@ -24,11 +24,16 @@ const createAndSavePerson = (done) => {
       return done(err);
     }
     done(null, data);
-  })
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.insertMany(arrayOfPeople, function(err, data) {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
 };
 
 const findPeopleByName = (personName, done) => {
