@@ -87,7 +87,7 @@ const findAndUpdate = (personName, done) => {
     if (err) {
       done(err);
     }
-    dont(null, data);
+    done(null, data);
   })
 };
 
