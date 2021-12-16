@@ -71,7 +71,7 @@ const findEditThenSave = (personId, done) => {
     if (err) {
       return done(err);
     }
-    data.favoriteFoods.push(foodToAdd);
+    data.favoriteFoods.push(foodToAdd).save();
     done(null, data);
   });
 };
