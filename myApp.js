@@ -102,7 +102,7 @@ const removeById = (personId, done) => {
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
-  Person.remove({name: nameToRemove}, async (err, data) => {
+  Person.deleteMany({name: nameToRemove}, async (err, data) => {
     if (err) {
       done(err);
     }
